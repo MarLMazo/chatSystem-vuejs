@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+#firebase files connection
+/src/firebase
+
 
 # local env files
 .env.local
