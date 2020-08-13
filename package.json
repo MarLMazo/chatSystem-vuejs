@@ -16,6 +16,7 @@
     "popper.js": "^1.16.1",
     "poppers.js": "^1.16.1",
     "vue": "^3.0.0-0",
+    "vue-chat-scroll": "^1.4.0",
     "vue-router": "^4.0.0-0"
   },
   "devDependencies": {

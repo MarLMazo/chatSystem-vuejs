@@ -1,11 +1,27 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue";
+import Chat from "../views/Chat.vue";
+//import Chat from "../components/CreateMessage.vue";
 
 const routes = [
   {
-    path: "/login",
-    name: "login",
+    path: "/",
+    name: "Login",
     component: Login
+  },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: Chat,
+    props: true,
+    //need to protect
+    beforeEnter: (to, from, next) => {
+      if (to.params.name) {
+        next();
+      } else {
+        next({name: 'Login'})
+      }
+    }
   }
   // {
   //   path: "/",
