@@ -71,7 +71,8 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(data => {
-          this.$router.replace({ name: "Dashboard" });
+          console.log(data);
+          this.$router.replace({ name: "Chat" });
         })
         .catch(err => {
           this.error = err.message;
