@@ -3,6 +3,7 @@ import VueChatScroll from 'vue-chat-scroll';
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import firebase from "firebase";
 import firebaseApp from "../src/firebase/init";
 
 import 'bootstrap';
