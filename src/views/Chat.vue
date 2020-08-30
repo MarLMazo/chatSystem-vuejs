@@ -1,7 +1,7 @@
 <template>
     <div class="container chat">
         <h2 class="text-primary text-center">Real-Time Chat</h2>
-        <h5 class="text-secondary text-center">Powered by Vue.js &amp; Firebase</h5>
+        <h5 class="text-secondary text-center">Welcome {{user.data.displayName}}</h5>
         <div class="card">
             <div class="card-body">
                 <p class="text-secondary nomessages" v-if="messages.length == 0">
@@ -24,11 +24,21 @@
 
 <script>
 import CreateMessage from '../components/CreateMessage';
-import fb from '../firebase/init';
+import { mapGetters } from "vuex";
+import fb from 'firebase';
 import moment from 'moment';
+
+const db = fb.firestore();
+
 export default {
     name: 'Chat',
     props: ['name'],
+    computed: {
+    // map `this.user` to `this.$store.getters.user`
+        ...mapGetters({
+        user: "user"
+        })
+    },
     components: {
         CreateMessage
     },
@@ -38,7 +48,8 @@ export default {
         }
     },
     created() {
-        let ref = fb.collection('messages').orderBy('timestamp');
+        console.log(this.user.data.displayName);
+        let ref = db.collection('messages').orderBy('timestamp');
         ref.onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
                 if (change.type == 'added') {

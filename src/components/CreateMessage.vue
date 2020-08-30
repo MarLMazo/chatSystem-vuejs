@@ -12,6 +12,9 @@
 
 <script>
 import fb from '../firebase/init';
+import { mapGetters } from "vuex";
+
+const db = fb.firestore();
 export default {
     name: 'CreateMessage',
     props: ['name'],
@@ -21,12 +24,21 @@ export default {
             errorText: null
         }
     },
+    computed: {
+    // map `this.user` to `this.$store.getters.user`
+        ...mapGetters({
+        user: "user"
+        })
+    },
     methods: {
         createMessage () {
+            console.log(this.user);
+            console.log(this.name);
+            console.log(name);
             if (this.newMessage) {
-                fb.collection('messages').add({
+                db.collection('messages').add({
                     message: this.newMessage,
-                    name: this.name,
+                    name: this.user.data.displayName,
                     timestamp: Date.now()
                 }).catch(err => {
                     console.log(err);
