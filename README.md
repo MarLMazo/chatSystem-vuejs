@@ -1,24 +1,19 @@
-# vue-chat
+# Chat System using VueJs and Firebase as database
+A simple Chat System where user that login can see all the chat history of all the user within a group.
 
-## Project setup
+Similar to a post where user can see all the post in a social-media site.
+
+## Development
+### Setup Project
+To install all dependencies
 ```
 npm install
 ```
+To use your own firebase 
+Go to the folder: <strong>src/firebase/init.js</strong>\
+Change all the necessary files for all keys
 
-### Compiles and hot-reloads for development
+### To Compile and Run the Project for development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
